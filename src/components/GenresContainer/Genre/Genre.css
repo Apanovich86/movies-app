@@ -1,0 +1,9 @@
+.genre{
+    background: cornflowerblue;
+    padding: 5px;
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+    margin: 5px;
+    width: 107px;
+    text-align: center;
+}

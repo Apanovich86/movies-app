@@ -1,0 +1,27 @@
+.container{
+text-align: center;
+}
+
+.cards{
+    border-width: 0;
+    border-style: solid;
+    border-color: currentColor;
+    display: grid;
+    grid-template-columns: repeat(3, 350px);
+    justify-content: space-around;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+}
+
+.card{
+    padding: 0.5rem;
+    flex-direction: column;
+    display: flex;
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: currentColor;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}

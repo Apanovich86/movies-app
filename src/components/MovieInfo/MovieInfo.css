@@ -1,0 +1,14 @@
+.poster{
+    width: 40%;
+}
+
+.d-flex{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.movieInfo{
+    width: 50%;
+}
