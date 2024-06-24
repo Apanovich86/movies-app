@@ -52,7 +52,7 @@ export const movieSlice = createSlice({
             state.movies = action.payload;
         })
             .addCase(loadMovieById.fulfilled, (state, action) => {
-                state.movie = action.payload;
+                    state.movie = action.payload;
                 }
             )
     },

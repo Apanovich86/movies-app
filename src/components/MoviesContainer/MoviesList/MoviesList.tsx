@@ -1,31 +1,43 @@
-import React from 'react';
-import {useAppSelector} from "../../../redux/hooks";
+import React, {useState} from 'react';
 import "./MoviesList.css"
 import MoviesListCard from "../MoviesListCard/MoviesListCard";
+import usePaginatedFetchMovies from "../../../services/PaginateMovies";
 
-interface IMoviesProps {
-    movie?: boolean
-}
+const MoviesList = () => {
+    const [page, setPage] = useState<number>(1);
+    const {data: movies, isLoading} = usePaginatedFetchMovies(page);
 
-const MoviesList = ({movie}: IMoviesProps) => {
-    const state = useAppSelector((state) => state.moviesSlice)
     return (
         <div className={"container"}>
-            {movie && <h1>Movies</h1>}
-            {state.error && (
-                <span>
-                    Error in movies state: {state.error.message}
-                </span>
-            )}
-
-            <div className={"cards"}>
-                {state.movies.map((movie) => (
-                    <div key={movie.id}>
-                        <MoviesListCard movie={movie}/>
-                    </div>
-                ))}
-            </div>
-
+            {isLoading ? (
+                <h2>Loading...</h2>
+            ) : (
+                <div className={"cards"}>
+                    {movies?.map((movie) => (
+                        <div key={movie.id}>
+                            <MoviesListCard movie={movie}/>
+                        </div>
+                    ))}
+                </div>)}
+            <footer style={{margin: "10px"}}>
+                <button
+                    className="btn btn-primary"
+                    type="button"
+                    onClick={() => setPage((prevPage) => prevPage - 1)}
+                    disabled={page === 1 ? true : false}
+                >
+                    Prev
+                </button>
+                <p style={{display: "inline", margin: "10px"}}>{page}</p>
+                <button
+                    className="btn btn-primary"
+                    type="button"
+                    onClick={() => setPage((prevPage) => prevPage + 1)}
+                    disabled={false}
+                >
+                    Next
+                </button>
+            </footer>
         </div>
     );
 };
